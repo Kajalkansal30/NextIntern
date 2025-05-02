@@ -1,16 +1,13 @@
+
 {
-    "routes":[
-        {
-            "src":"/",
-            "dest":"/"
-          },
-          {
-            "src":"/login",
-            "dest":"/"
-          },
-          {
-            "src":"/signup",
-            "dest":"/"
-          }
+    "rewrites": [
+        { "source": "/", "destination": "/" },
+        { "source": "/login", "destination": "/" },
+        { "source": "/signup", "destination": "/" },
+        { "source": "/profile", "destination": "/" },
+        { "source": "/jobs", "destination": "/" },
+        { "source": "/job/:id", "destination": "/" },
+        { "source": "/(.*)", "destination": "/" }
     ]
-}
+  }
+  
