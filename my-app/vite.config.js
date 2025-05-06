@@ -12,19 +12,23 @@
 //   },
 // });
 
-import path from "path"
-import react from "@vitejs/plugin-react"
-import { defineConfig } from "vite"
+import path from 'path';
+import react from '@vitejs/plugin-react';
+import { defineConfig } from 'vite';
 
 export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src"),
-    },
-    //added css
-    css: {
-      postcss: './postcss.config.cjs'
+      '@': path.resolve(__dirname, './src'),
     },
   },
-})
+  build: {
+    rollupOptions: {
+      external: ['axios'], // Externalize axios or other dependencies
+    },
+  },
+  css: {
+    postcss: './postcss.config.cjs',
+  },
+});
