@@ -42,6 +42,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.21.0",
+    "@itsy/vite-css-inject": "^1.0.2",
     "@tailwindcss/postcss": "^4.0.15",
     "@types/react": "^19.0.10",
     "@types/react-dom": "^19.0.4",
