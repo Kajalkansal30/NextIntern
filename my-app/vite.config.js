@@ -60,24 +60,27 @@ import path from 'path';
 import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
 import { defineConfig } from 'vite';
-import InjectCSS from '@itsy/vite-css-inject';
 
 export default defineConfig({
-  plugins: [
-    react(),
-    tailwindcss(),
-    InjectCSS(),
-  ],
+  plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
-      '@tests': path.resolve(__dirname, './tests'),  // Added alias for tests
     },
   },
   build: {
     rollupOptions: {
-      // No externalization needed for axios here
+      output: {
+        manualChunks(id) {
+          if (id.includes('node_modules')) {
+            if (id.includes('react')) return 'vendor-react';
+            if (id.includes('axios')) return 'vendor-axios';
+            return 'vendor';
+          }
+        }
+      }
     },
+    chunkSizeWarningLimit: 1000, // Optional: increases the warning threshold
   },
   css: {
     postcss: './postcss.config.cjs',
