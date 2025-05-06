@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import Navbar from '../shared/Navbar';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'sonner';
-import axios from 'axios';
+//import axios from 'axios'; // ✅ correct
+import axios from 'axios'; // ✅ correct
 import { USER_API_END_POINT } from '@/utils/constant';
 import { useDispatch, useSelector } from 'react-redux';
 import { setLoading, setUser } from '@/redux/authSlice';
