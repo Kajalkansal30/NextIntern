@@ -58,17 +58,24 @@
 
 import path from 'path';
 import react from '@vitejs/plugin-react';
-import tailwindcss from '@tailwindcss/vite';
+import tailwindcss from '@tailwindcss/postcss'; // ✅ FIX: Import from postcss, not vite
 import { defineConfig } from 'vite';
 
+// Use tailwind via postcss in CSS config, not directly as a plugin
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
+  plugins: [react()],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
     },
   },
+  css: {
+    postcss: {
+      plugins: [tailwindcss],
+    },
+  },
   build: {
+    chunkSizeWarningLimit: 1000,
     rollupOptions: {
       output: {
         manualChunks(id) {
@@ -77,12 +84,9 @@ export default defineConfig({
             if (id.includes('axios')) return 'vendor-axios';
             return 'vendor';
           }
-        }
-      }
+        },
+      },
     },
-    chunkSizeWarningLimit: 1000, // Optional: increases the warning threshold
-  },
-  css: {
-    postcss: './postcss.config.cjs',
   },
 });
+
