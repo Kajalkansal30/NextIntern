@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Navbar from "../shared/Navbar";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
-import axios from "axios";
+import axios from 'axios';
 import { toast } from "sonner";
 import { JOB_API_END_POINT } from "@/utils/constant";
 
