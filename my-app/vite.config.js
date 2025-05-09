@@ -73,20 +73,6 @@ export default defineConfig({
     postcss: {
       plugins: [tailwindcss],
     },
-  },
-  build: {
-    chunkSizeWarningLimit: 1000,
-    rollupOptions: {
-      output: {
-        manualChunks(id) {
-          if (id.includes('node_modules')) {
-            if (id.includes('react')) return 'vendor-react';
-            if (id.includes('axios')) return 'vendor-axios';
-            return 'vendor';
-          }
-        },
-      },
-    },
-  },
+  }
 });
 
