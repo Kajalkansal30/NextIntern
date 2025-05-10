@@ -36,7 +36,10 @@ connectDB()
     })
     .catch((err) => console.error("❌ MongoDB Connection Error:", err));
  
-
+// check measures
+app.get('/', (req, res) => {
+    res.send('Hello World')
+    })
 // api's
 app.use("/api/v1/auth", authRoutes);
 app.use("/api/v1/user", userRoute);
