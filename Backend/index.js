@@ -21,7 +21,7 @@ app.use(cookieParser());
 // middleware
 
 const corsOptions = {
-    origin: 'http://localhost:5173',
+    origin: 'https://next-intern.vercel.app',
     credentials: true
 }
 
